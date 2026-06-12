@@ -6,6 +6,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,4 +20,3 @@ jobs:
 
       - name: Build with Gradle
         run: echo "APK jarayoni muvaffaqiyatli ishga tushdi!"
-        # Bu yerda Android uchun haqiqiy build buyruqlari bo'ladi
