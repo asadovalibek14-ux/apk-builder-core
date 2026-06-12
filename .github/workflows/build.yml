@@ -12,11 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
+      - name: Build and Package
+        run: |
+          mkdir -p output
+          # index.html faylingizni arxivlaymiz (hozircha APK uchun shablon sifatida)
+          zip -r my-app.zip index.html
+          mv my-app.zip output/my-app.zip
 
-      - name: Build with Gradle
-        run: echo "APK jarayoni muvaffaqiyatli ishga tushdi!"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: MyAndroidApp
+          path: output/my-app.zip
