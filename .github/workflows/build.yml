@@ -3,11 +3,14 @@ name: Android Build
 on:
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -16,10 +19,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build and Package
+      - name: Create Artifact
         run: |
           mkdir -p output
-          echo "Build muvaffaqiyatli yakunlandi!" > output/status.txt
+          echo "Build muvaffaqiyatli yakunlandi" > output/status.txt
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
