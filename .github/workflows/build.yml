@@ -19,7 +19,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Create Artifact
+      - name: Build and Package
         run: |
           mkdir -p output
           echo "Build muvaffaqiyatli yakunlandi" > output/status.txt
